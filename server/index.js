@@ -6,9 +6,13 @@ const port = process.env.PORT || 3000;
 
 const app=express();
 
-app.use(cors());
+app.use(cors({origin: "*"}));
 
 app.use(express.json());
+
+app.get('/health',(req,res)=>{
+  res.send("OK");
+});
 
 app.get('/',(req,res)=>{
   res.send('Hello World');
