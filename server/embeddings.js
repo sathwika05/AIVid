@@ -23,7 +23,7 @@ export const vectorStore = await PGVectorStore.initialize(embeddings, {
     distanceStrategy: 'cosine'
 });
 
-export const addYTVideoToVectorStore = async (videoData)=>{
+export const addVideoToVectorStore = async (videoData)=>{
     const {transcript,video_id}=videoData;
 
     const docs = [

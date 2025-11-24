@@ -6,12 +6,12 @@ import data from './data.js';
 import { tool } from '@langchain/core/tools';
 import { MemorySaver } from '@langchain/langgraph';
 import {z} from 'zod';
-import {vectorStore,addYTVideoToVectorStore} from "./embeddings.js";
+import {vectorStore,addVideoToVectorStore} from "./embeddings.js";
 
 
 
-//await addYTVideoToVectorStore(data[0]);
-//await addYTVideoToVectorStore(data[1]);
+//await addVideoToVectorStore(data[0]);
+//await addVideoToVectorStore(data[1]);
 
 //retrieval tool
 const retrievalTool=tool(
