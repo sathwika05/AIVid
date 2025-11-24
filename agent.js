@@ -47,8 +47,8 @@ const llm = new ChatAnthropic({
 
 const checkpointer = new MemorySaver();
 
-const agent = createReactAgent({ llm, tools: [retrievalTool],checkpointer, });
-
+export const agent = createReactAgent({ llm, tools: [retrievalTool],checkpointer, });
+/*
 //testing the agent
 const video_id='fuhE6PYnRMc';
   console.log('------------Q1: What countless cars are used for?',video_id);
