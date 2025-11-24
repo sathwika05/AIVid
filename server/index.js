@@ -6,6 +6,19 @@ const port = process.env.PORT || 3000;
 
 const app=express();
 
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
+const openaiKey = process.env.OPENAI_API_KEY;
+const anthropicKey = process.env.ANTHROPIC_API_KEY;
+const dbUrl = process.env.DB_URL;
+
+console.log("OpenAI:", !!openaiKey);
+console.log("Anthropic:", !!anthropicKey);
+console.log("DB:", !!dbUrl);
+
+
 app.use(cors({origin: "*"}));
 
 app.use(express.json());
