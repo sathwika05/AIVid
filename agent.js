@@ -33,7 +33,7 @@ const retrievalTool=tool(
   },
   {
     name: 'retrieve',
-    description: 'Retrieve the mose relevant chunks of text from the transcript of a youtube video',
+    description: 'Retrieve the mose relevant chunks of text from the transcript of a video',
     schema: z.object({
       query: z.string().describe('The query to use in your search.'),
     }),
