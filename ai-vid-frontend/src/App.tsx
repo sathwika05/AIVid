@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect, FormEvent, KeyboardEvent } from "react";
+import React, { useState, useRef, useEffect} from "react";
+import type { FormEvent, KeyboardEvent } from "react";
 
 type Message = {
   id: number;
