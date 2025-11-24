@@ -10,8 +10,8 @@ import {vectorStore,addYTVideoToVectorStore} from "./embeddings.js";
 
 
 
-await addYTVideoToVectorStore(data[0]);
-await addYTVideoToVectorStore(data[1]);
+//await addYTVideoToVectorStore(data[0]);
+//await addYTVideoToVectorStore(data[1]);
 
 //retrieval tool
 const retrievalTool=tool(
@@ -23,7 +23,7 @@ const retrievalTool=tool(
     console.log("query=",query);
     console.log("video_id=",video_id);
     
-    const retrievedDocs = await vectorStore.similaritySearch(query, 3,(doc)=> doc.metadata.video_id===video_id);
+    const retrievedDocs = await vectorStore.similaritySearch(query, 3,{video_id});
 
     //console.log('Retrieved docs: -----------------');
     //console.log(retrievedDocs[0]);
@@ -54,7 +54,7 @@ const video_id='fuhE6PYnRMc';
   console.log('------------Q1: What countless cars are used for?',video_id);
   
   const results = await agent.invoke({
-    messages: [{ role: "user", content: "What countless cars are used for?" }],
+    messages: [{ role: "user", content: "How many buses jet car cleared?" }],
   },{configurable:{thread_id:1,video_id}});
 
   console.log(results.messages.at(-1)?.content);
