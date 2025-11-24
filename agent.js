@@ -50,11 +50,11 @@ const checkpointer = new MemorySaver();
 const agent = createReactAgent({ llm, tools: [retrievalTool],checkpointer, });
 
 //testing the agent
-const video_id='lfkjm2YRG-Q';
-  console.log('------------Q1: Where is the first firework occured?');
+const video_id='fuhE6PYnRMc';
+  console.log('------------Q1: What countless cars are used for?',video_id);
   
   const results = await agent.invoke({
-    messages: [{ role: "user", content: "Where is the first firework occured?" }],
+    messages: [{ role: "user", content: "What countless cars are used for?" }],
   },{configurable:{thread_id:1,video_id}});
 
   console.log(results.messages.at(-1)?.content);
