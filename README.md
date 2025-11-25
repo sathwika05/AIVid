@@ -1,4 +1,4 @@
-🚀 AI-Vid
+🚀 ** AI-Vid
 
 AI Agent That Uses RAG to Turn Video Transcripts Into Instant Insights
 
