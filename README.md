@@ -1,188 +1,166 @@
-🚀 AIVid — AI-Powered Video Transcript Intelligence
+🚀 AI-Vid
+AI Agent That Converts Video Transcripts Into Actionable Insights
 
-AIVid is an AI agent that converts video transcripts into instant insights.
-It scrapes the video transcript using Bright Data, stores it in PgVector (Neon), and uses a RAG pipeline with tool-calling to answer user questions with high accuracy and context.
+AI-Vid is an AI-powered video-understanding system that collects video transcripts, stores them in a vector database, and answers questions using RAG (Retrieval-Augmented Generation).
+It transforms long videos into clear, accurate, context-aware insights — instantly.
 
-🔗 Live Frontend: https://aivid-frontend.onrender.com
+🔥 Features
 
-🔗 Backend API: https://aivid.onrender.com
+Bright Data Scraping → Automatically extract video transcript + metadata
 
-⭐ What AIVid Does
-🎥 Turns video transcripts into searchable knowledge
+RAG Pipeline → High-accuracy contextual answers
 
-Scrapes the transcript from any video using Bright Data
+LLM-Powered Agent → Natural, human-like responses
 
-Splits, embeds, and stores transcript chunks
+Video-Scoped Search → Queries retrieve only chunks matching the current video_id
 
-Enables efficient semantic search with PgVector
+Frontend + Backend → Full-stack production-ready setup
 
-🔍 Retrieval-Augmented Generation (RAG)
+Fast API Responses → Hosted on Render for quick testing and demos
 
-Uses similarity search to fetch the most relevant transcript pieces
+🧠 Tech Stack
+Backend
 
-Grounded answers — no hallucinations
+Node.js (Express)
 
-Filters chunks by video_id, enabling multi-video support
+LangChain + JSON Schema Tools / Agent
 
-🤖 AI Agent with LangChain Tool Calling
+Nomic Embed (for embeddings)
 
-Custom retrieve tool retrieves transcript chunks
+pgvector on Neon Postgres
 
-LLM decides when to call the tool
+Bright Data (video scraping)
 
-Produces real-time, context-aware answers
+Render Deployment
 
-💬 Clean Chat UI
+Frontend
 
-Minimal, modern React interface
+React + Vite (or Next.js if your frontend uses it)
 
-Keyboard shortcuts
+Custom chat UI
 
-Chat history per thread
+Fetch API to your agent endpoint
 
-💥 Project Impact
+LLM Used
 
-AIVid dramatically improves the way users extract information from video content.
+OpenAI GPT-4.1 (or your current model) for final reasoning + answer generation
 
-🚀 Productivity
+Nomic Embed for embedding transcript chunks
 
-Transforms a 20–30 minute video into 5-second insights, saving time and effort.
+RAG retrieval powered by pgvector similarity search
 
-🎯 Accuracy
-
-RAG grounding ensures all answers come directly from the transcript.
-Perfect for research, content creators, and knowledge workers.
-
-🧱 Full-Stack AI Engineering
-
-This project demonstrates strong skills in:
-
-LLM agents & tool-calling
-
-RAG system architecture
-
-Vector databases (PgVector + Neon)
-
-Scalable backend design
-
-Frontend chat UI development
-
-Cloud deployment using Render
-
-A strong portfolio project that appeals to recruiters and showcases end-to-end AI engineering capability.
-
-🧠 High-Level Architecture
-React Frontend (ai-vid-frontend)
-      ↓  /generate
-Express Backend (server)
-      ↓
-LangChain AI Agent
-      ↓
-Custom "retrieve" Tool
-      ↓
-PgVector (Neon)
-      ↓
-Bright Data Transcript Scraper
-
-📁 Project Structure
-root/
+📦 Project Structure
+ai-vid/
 │
 ├── ai-vid-frontend/
-│     └── src/
+│   └── src/...
 │
 └── server/
-      ├── agent.js
-      ├── index.js
-      ├── embeddings.js
-      ├── package.json
+    ├── agent.js
+    ├── db.js
+    └── utils/
 
+⚙️ How It Works
+1. Scrape Video Transcript
 
-This README has been tailored to match your exact repo layout.
+Bright Data fetches transcript + metadata → stored in your DB.
 
-⚙️ Backend Setup (server/)
-1. Install dependencies
+2. Chunk + Embed
+
+Transcript is chunked and embedded using Nomic embed.
+
+3. Store in pgvector
+
+Stored inside Neon Postgres table containing:
+
+id
+
+video_id
+
+content
+
+embedding vector
+
+4. Query the Agent
+
+The agent retrieves ONLY the video content that matches the provided video_id:
+
+const retrievedDocs = await vectorStore.similaritySearch(
+  query,
+  3,
+  (doc) => doc.metadata.video_id === video_id
+);
+
+5. LLM Generates Final Answer
+
+GPT-4.1 produces a concise, accurate answer grounded in transcript data.
+
+🚀 Running Locally
+Backend
 cd server
 npm install
-
-2. Create .env
-OPENAI_API_KEY=your_key
-ANTHROPIC_API_KEY=your_key
-BRIGHT_DATA_TOKEN=your_token
-DB_URL=your_neon_pgvector_connection_string
-NODE_ENV=production
-
-3. Start backend locally
 node agent.js
 
-
-or (if using index.js)
-
-node index.js
-
-
-Backend runs at:
-
-http://localhost:3000
-
-🎨 Frontend Setup (ai-vid-frontend/)
-1. Install dependencies
+Frontend
 cd ai-vid-frontend
 npm install
-
-2. Create .env
-VITE_API_URL=https://aivid.onrender.com
-
-3. Run dev server
 npm run dev
 
+🛠 Environment Variables
 
-Frontend runs at:
+Create a .env inside /server:
 
-http://localhost:5173
+OPENAI_API_KEY=
+BRIGHT_DATA_KEY=
+DATABASE_URL=
 
-🚀 Deployment (Render + Neon)
-✔ Frontend (Render Static Site)
+🌍 Deployment
+Backend
 
-Repo root points to /ai-vid-frontend
+Deploy to Render
 
-Build command: npm run build
+Use Web Service
 
-Publish directory: dist
+Add environment variables
 
-Add env VITE_API_URL=https://aivid.onrender.com
+Point your frontend to the Render URL
 
-✔ Backend (Render Web Service)
+Frontend
 
-Root directory: /server
+Deploy to Vercel / Netlify / Render Static Site
 
-Start command: node index.js
+📌 Example Prompt
 
-Add all .env variables in Render dashboard
+User:
 
-✔ Database (Neon)
+"What will people learn from this video?"
 
-PgVector enabled
+AI-Vid:
+(Uses video transcript + RAG to answer accurately)
 
-Stores transcript embeddings
+📈 Impact
 
-Used for similarity search + filtering by video_id
+AI-Vid turns long videos into instant knowledge, enabling:
 
-🔌 API Example
-POST /generate
+Faster research
 
-Request:
+Better content understanding
 
-{
-  "query": "What will people learn from this video?",
-  "thread_id": 1,
-  "video_id": "fuhE6PYnRMc"
-}
+Automated summarization
 
+Stronger learning productivity
 
-Response:
+Video-based Q&A apps
 
-"Here’s what the video teaches..."
+Video search engines
 
-📝 License
+AI study assistants
+
+🤝 Contributing
+
+PRs welcome!
+Feel free to open issues, improve accuracy, or enhance the UI.
+
+📜 License
 
 MIT License
