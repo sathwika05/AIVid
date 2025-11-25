@@ -1,6 +1,6 @@
 # 🧠 AI-Vid: AI-Powered Video Insights
 
-A smart, scalable AI agent that uses **RAG (Retrieval-Augmented Generation)** to turn video transcripts into actionable insights. Automatically retrieves relevant transcript chunks and generates context-aware answers—helping users save time and gain knowledge efficiently.
+A smart, scalable AI agent that uses **RAG (Retrieval-Augmented Generation)** to turn video transcripts into actionable insights. Automatically retrieves relevant transcript chunks and generates context-aware answers using **Anthropic Claude Haiku 4.5** (for reasoning and answer generation) and **OpenAI text-embedding-3-large** (for embeddings)—helping users save time and gain knowledge efficiently.
 
 ---
 
