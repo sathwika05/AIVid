@@ -83,10 +83,5 @@ OPENAI_API_KEY=
 BRIGHT_DATA_KEY=
 DB_URL=
 
-🤝 Contributing
 
-Pull requests and issues are welcome!
 
-📜 License
-
-MIT License
