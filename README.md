@@ -1,143 +1,59 @@
-🚀 ## AI-Vid
+# 🧠 AI-Vid: AI-Powered Video Insights
 
-AI Agent That Uses RAG to Turn Video Transcripts Into Instant Insights
+A smart, scalable AI agent that uses **RAG (Retrieval-Augmented Generation)** to turn video transcripts into actionable insights. Automatically retrieves relevant transcript chunks and generates context-aware answers—helping users save time and gain knowledge efficiently.
 
-AI-Vid scrapes video transcripts, embeds them using OpenAI embeddings, stores them in pgvector, and uses RAG (Retrieval-Augmented Generation) with Anthropic Claude Haiku 4.5 to answer questions with high accuracy.
-It transforms long videos into fast, reliable, and context-grounded knowledge.
+---
 
-🔥 1. Features
+## 🚀 Features
 
-📄 Video transcript scraping
+### 🎯 AI-Powered RAG Answers
+- ✅ Retrieves relevant transcript chunks using **video_id**  
+- 📌 Generates context-aware answers with **Anthropic Claude Haiku 4.5**  
+- 👥 Ensures accurate and grounded responses  
 
-🧩 Transcript chunking + embeddings
+### 📄 Transcript Processing
+- 🧠 Scrapes video transcripts using Bright Data  
+- ⚡ Splits transcripts into 1000-character chunks  
+- 🔀 Stores metadata for video-specific retrieval  
 
-🔍 RAG-powered question answering
+### 🧩 Embeddings & Storage
+- 🔐 Embeds transcript chunks using **OpenAI text-embedding-3-large**  
+- 🛠 Stores vectors and metadata in **pgvector (Neon Postgres)**  
+- ⚡ Enables fast and scalable similarity search  
 
-🎯 Video-specific retrieval using video_id
+### 💬 Interactive Chat
+- 💻 React-based chat UI  
+- 🎯 Supports video-specific queries for focused answers  
+- ⏱ Provides near real-time responses  
 
-⚡ Fast and accurate responses
+---
 
-💬 Interactive React chat UI
+## 🛠️ Tech Stack
 
-🌐 Fully deployed frontend + backend
+| Layer              | Technology                              |
+|-------------------|----------------------------------------|
+| **Backend**        | Node.js, Express                        |
+| **Frontend**       | ReactJS                                 |
+| **Database**       | PostgreSQL + pgvector (Neon)           |
+| **Embeddings**     | OpenAI text-embedding-3-large           |
+| **LLM**            | Anthropic Claude Haiku 4.5              |
+| **Web Scraping**   | Bright Data                              |
+| **Deployment**     | Render                                   |
 
-🧠 2. LLMs Used
-2.1 Primary Answering Model
+---
 
-Anthropic Claude Haiku 4.5
+## 📝 API Endpoints
 
-Handles reasoning, tool execution, and final answers
+### 🔐 Backend
+- `GET /health` – Health check endpoint  
+- `GET /` – Test endpoint  
 
-Used in RAG pipeline to produce context-aware answers
-
-2.2 Embedding Model
-
-OpenAI text-embedding-3-large
-
-Generates embeddings for transcript chunks
-
-Powers vector retrieval in pgvector
-
-🏗 3. System Architecture
-1. Video → Bright Data → Transcript
-2. Transcript → Chunking (1000-char segments)
-3. Chunks → OpenAI embeddings
-4. Store embeddings → pgvector (Neon Postgres)
-5. User query + video_id → RAG retrieval
-6. Retrieve top chunks
-7. Claude Haiku 4.5 → Answer
-
-📁 4. Project Structure
-ai-vid/
-│
-├── ai-vid-frontend/
-│   └── src/
-│
-└── server/
-    ├── agent.js
-    ├── embeddings.js
-    ├── index.js
-    └── data.js
-
-🌐 5. Live Deployment
-
-Frontend: https://aivid-frontend.onrender.com
-
-Backend: https://aivid.onrender.com
-
-⚙️ 6. How AI-Vid Works
-
-Transcript Processing: Scrape video transcript + metadata (video_id) using Bright Data
-
-Embedding: Split transcript into chunks and embed using OpenAI text-embedding-3-large
-
-Storage: Store chunks + embeddings in pgvector
-
-RAG Retrieval: Search for relevant chunks by video_id
-
-Answer Generation: Claude Haiku 4.5 produces grounded, context-aware answers
-
-🧪 7. Core Backend Examples
-
-Claude Haiku 4.5
-
-const llm = new ChatAnthropic({
-  modelName: "claude-haiku-4-5-20251001",
-  apiKey: process.env.ANTHROPIC_API_KEY,
-});
-
-
-OpenAI Embeddings
-
-const embeddings = new OpenAIEmbeddings({
-  model: "text-embedding-3-large",
-});
-
-
-RAG Retrieval
-
-const retrievedDocs = await vectorStore.similaritySearch(
-  query,
-  3,
-  { video_id }
-);
-
-💻 8. Running Locally
-Backend
-cd server
-npm install
-node index.js
-
-Frontend
-cd ai-vid-frontend
-npm install
-npm run dev
-
-🔑 9. Environment Variables
-
-.env in server folder:
-
-ANTHROPIC_API_KEY=
-OPENAI_API_KEY=
-BRIGHT_DATA_KEY=
-DB_URL=
-
-📊 10. Impact (Numbers)
-
-⏱ Saves 80–90% of video-watching time
-
-🚀 Speeds research by 70% via RAG-based transcript search
-
-✅ Improves answer accuracy by 60–75%
-
-⚡ Delivers near real-time retrieval & answers
-
-🌍 Scales easily to multiple videos without performance loss
-
-🤝 11. Contributing
-
-Pull requests and issues are welcome!
-
-📜 12. License
-
-MIT License
+### 💬 Generate AI Answer
+- `POST /generate` – Send a query and video_id to receive AI-generated answers  
+  - **Body Example**:  
+  ```json
+  {
+    "query": "What did people throw in fire to make a bang?",
+    "video_id": "fuhE6PYnRMc",
+    "thread_id": 1
+  }
