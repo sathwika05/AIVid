@@ -4,6 +4,15 @@ A smart, scalable AI agent that uses **RAG (Retrieval-Augmented Generation)** to
 
 ---
 
+## 📊 Impact (Numbers)
+
+- ⏱ Saves **80–90%** of video-watching time  
+- 🚀 Speeds research by **70%** with RAG transcript search  
+- ✅ Improves answer accuracy by **60–75%**  
+- ⚡ Delivers near real-time answers  
+- 🌍 Scales easily across multiple videos 
+
+----
 ## 🚀 Features
 
 ### 🎯 AI-Powered RAG Answers
@@ -63,15 +72,7 @@ A smart, scalable AI agent that uses **RAG (Retrieval-Augmented Generation)** to
 - **Frontend:** [https://aivid-frontend.onrender.com](https://aivid-frontend.onrender.com)  
 - **Backend:** [https://aivid.onrender.com](https://aivid.onrender.com)  
 
----
-
-## 📊 Impact (Numbers)
-
-- ⏱ Saves **80–90%** of video-watching time  
-- 🚀 Speeds research by **70%** with RAG transcript search  
-- ✅ Improves answer accuracy by **60–75%**  
-- ⚡ Delivers near real-time answers  
-- 🌍 Scales easily across multiple videos  
+ 
 
 ---
 
