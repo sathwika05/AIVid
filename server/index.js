@@ -21,7 +21,8 @@ console.log("DB:", !!dbUrl);
 
 app.use(cors({origin: "*"}));
 
-app.use(express.json());
+app.use(express.json({ limit: "10mb" })); // Adjust if your payloads are bigger
+app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
 app.get('/health',(req,res)=>{
   res.send("OK");
@@ -46,6 +47,12 @@ app.post('/generate',async (req,res)=>{
   
     res.send(results.messages.at(-1).content);
 })
+
+app.post('/webhook',(req,res)=>{
+  console.log(req.body);
+
+  res.send('OK'); 
+});
 
 app.listen(port,()=>{console.log(`Server is running on port ${port}`);
 });
