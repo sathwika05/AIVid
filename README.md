@@ -4,7 +4,7 @@ A smart, scalable AI agent that uses **RAG (Retrieval-Augmented Generation)** to
 
 ---
 
-## 📊 Impact (Numbers)
+## 📊 Impact
 
 - ⏱ Saves **80–90%** of video-watching time  
 - 🚀 Speeds research by **70%** with RAG transcript search  
