@@ -67,10 +67,7 @@ A smart, scalable AI agent that uses **RAG (Retrieval-Augmented Generation)** to
     "thread_id": 1
   }
 
-## 🌐 Live Deployment
 
-- **Frontend:** [https://aivid-frontend.onrender.com](https://aivid-frontend.onrender.com)  
-- **Backend:** [https://aivid.onrender.com](https://aivid.onrender.com)  
 
  
 
